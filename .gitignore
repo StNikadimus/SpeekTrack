@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Personal data: voice profiles and statistics stay on this machine
+data/people/*
+!data/people/.gitkeep
+data/statistics.json
+data/*.tmp
+data/*.corrupt

@@ -1,0 +1,23 @@
+# Voice Counter - runtime dependencies (tested with Python 3.13).
+#
+# Install in TWO steps (see README.md -> Installation):
+#   pip install -r requirements.txt
+#   pip install --no-deps resemblyzer==0.1.4
+#
+# Why --no-deps for Resemblyzer: version 0.1.4 (the latest release) declares a
+# dependency on "webrtcvad", which is only published as C source and fails to
+# build without a compiler (e.g. on Windows without MSVC Build Tools). The
+# "webrtcvad-wheels" package below provides the same `webrtcvad` module as
+# prebuilt wheels; every other Resemblyzer dependency is listed here as well.
+
+# Resemblyzer's own dependencies
+torch>=2.0
+librosa>=0.10
+numpy>=1.24
+# Resemblyzer imports scipy.ndimage.morphology, which SciPy 2.0 removes.
+scipy>=1.10,<2
+webrtcvad-wheels>=2.0.11
+
+# Microphone input (PortAudio) and real-time resampling fallback
+sounddevice>=0.4.6
+soxr>=0.3
